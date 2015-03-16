@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from customers.models import Customer
+from django.views.generic.list import ListView
 
-def customer_list(request):
-    return render(request, 'customers/customers.html', {})
+class CustomerList(ListView):
+
+    model = Customer
