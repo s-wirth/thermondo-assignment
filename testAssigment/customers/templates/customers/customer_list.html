@@ -1,7 +1,7 @@
 <html>
     <ul>
       {% for customer in object_list %}
-        <li>{{customer.firstname}}</li>
+        <li><a href="{% url "customer-update" customer.id %}">{{customer.firstname}}</a></li>
       {% endfor %}
     </ul>
     <a href="{% url "create-customer" %}">Create new Customer</a>
