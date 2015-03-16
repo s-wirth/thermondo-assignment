@@ -1,9 +1,8 @@
 <html>
-    <p>Hi there!</p>
-    <p>It works!</p>
     <ul>
       {% for customer in object_list %}
         <li>{{customer.firstname}}</li>
       {% endfor %}
     </ul>
+    <a href="/create-customer">Create new Customer</a>
 </html>
