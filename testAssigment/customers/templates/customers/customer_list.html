@@ -1,5 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <table class="customers">
+<head>
+<title>Customers</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+  <div class="customer-list">
+    <table class="table" data-toggle="table" data-url="data1.json" data-cache="false" data-height="299">
       <tbody style="display:table;">
 
       <th>First Name</th>
@@ -8,6 +26,8 @@
       <th>Rating</th>
       <th>Rating Requested?</th>
       <th>Edit Customer</th>
+      <th>Email</th>
+
 
         {% for customer in object_list %}
         <tr>
@@ -17,10 +37,13 @@
           <td>{{customer.rating}}</td>
           <td>{{customer.rating_requested}}</td>
           <td><a href="{% url "customer-update" customer.id %}">Edit</a></td>
+          <td><a href="{% url "send-email" %}">send mail</a></td>
       </tr>
 
         {% endfor %}
       </tbody>
     </table>
-    <a href="{% url "create-customer" %}">Create new Customer</a>
+    <a href="{% url "create-customer" %}" class="btn btn-success">Create new Customer</a>
+  </div>
+</body>
 </html>

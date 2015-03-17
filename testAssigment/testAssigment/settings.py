@@ -8,6 +8,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
+# using post office as the default email backend
+EMAIL_BACKEND = 'post_office.EmailBackend'
+
+POST_OFFICE = {
+    'DEFAULT_PRIORITY' : 'now'
+}
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = "your.generic.test.email@gmail.com"
+EMAIL_PORT = 25  # default smtp port
+EMAIL_HOST_PASSWORD = "testingemail"
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'your.generic.test.email@gmail.com'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -37,6 +51,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'customers',
+    'post_office',
+    'djcelery',
+    'djcelery_email',
 )
 
 MIDDLEWARE_CLASSES = (
