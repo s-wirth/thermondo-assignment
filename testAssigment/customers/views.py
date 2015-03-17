@@ -1,17 +1,14 @@
-from django.shortcuts import render
 from customers.models import Customer
-from django.views.generic.list import ListView
+from django.conf import settings
+from django.core.mail import send_mail, EmailMessage
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.template import Context
+from django.template.loader import get_template, render_to_string
 from django.views.generic import CreateView, TemplateView
 from django.views.generic.edit import UpdateView
-from post_office import mail
-from django.http import HttpResponse
-from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
-from django.core.mail import send_mail
-from django.conf import settings
-from django.template import Context
-from django.template.loader import get_template
+from django.views.generic.list import ListView
 import smtplib
 
 class CustomerList(ListView):
@@ -44,4 +41,4 @@ def mail(request, pk):
     email.content_subtype = 'html'
     email.send(fail_silently=False)
 
-    return HttpResponse('mail')
+    return HttpResponse('You send an email!')
