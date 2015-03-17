@@ -1,8 +1,26 @@
 <html>
-    <ul>
-      {% for customer in object_list %}
-        <li><a href="{% url "customer-update" customer.id %}">{{customer.firstname}}</a></li>
-      {% endfor %}
-    </ul>
+    <table class="customers">
+      <tbody style="display:table;">
+
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Rating</th>
+      <th>Rating Requested?</th>
+      <th>Edit Customer</th>
+
+        {% for customer in object_list %}
+        <tr>
+          <td>{{customer.firstname}}</td>
+          <td>{{customer.lastname}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.rating}}</td>
+          <td>{{customer.rating_requested}}</td>
+          <td><a href="{% url "customer-update" customer.id %}">Edit</a></td>
+      </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
     <a href="{% url "create-customer" %}">Create new Customer</a>
 </html>
