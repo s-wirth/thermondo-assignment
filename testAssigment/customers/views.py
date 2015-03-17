@@ -34,11 +34,10 @@ class CustomerUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('customer-list')
 
-def mail(request):
-
-    # send_mail('Subject here', 'Here is the message.', settings.EMAIL_HOST_USER, ['a.sophiewirth@gmail.com'], fail_silently=False)
+def mail(request, pk):
+    customer = Customer.objects.get(id=pk)
     template = get_template('customers/email/email.html')
-    context = Context({'user': 'hugo', 'purchase': 'purchase'})
+    context = Context({'customer': customer})
     content = template.render(context)
     email = EmailMessage('Hello', content, settings.EMAIL_HOST_USER,
             ['a.sophiewirth@gmail.com'])

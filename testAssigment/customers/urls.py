@@ -7,5 +7,5 @@ urlpatterns = patterns('',
     url(r'^create-customer$', CreateCustomerView.as_view(), name="create-customer"),
     url(r'^customer-update/(?P<pk>\d+)$', CustomerUpdateView.as_view(), name="customer-update"),
     # url(r'^send-email$', EmailView.as_view(), name="send-email"),
-    url(r'^send-email$', 'customers.views.mail', name="send-email"),
+    url(r'^send-email/(?P<pk>\d+)$', 'customers.views.mail', name="send-email"),
 )

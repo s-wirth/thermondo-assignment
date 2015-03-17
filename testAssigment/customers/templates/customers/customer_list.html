@@ -34,7 +34,7 @@
           <td>{{customer.rating}}</td>
           <td>{{customer.rating_requested}}</td>
           <td><a href="{% url "customer-update" customer.id %}">Edit</a></td>
-          <td><a href="{% url "send-email" %}">send mail</a></td>
+          <td><a href="{% url "send-email" customer.id %}">send mail</a></td>
       </tr>
 
         {% endfor %}
